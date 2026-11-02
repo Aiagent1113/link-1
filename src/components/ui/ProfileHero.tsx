@@ -9,7 +9,8 @@ import {
   Download,
   Orbit,
   MapPin,
-  Sparkles,
+  Phone,
+  ShieldCheck,
 } from 'lucide-react';
 import { PROFILE_DATA } from '@/data/profileData';
 import { QRModal } from './QRModal';
@@ -108,6 +109,11 @@ END:VCARD`;
             </span>
           </div>
         </div>
+
+        {/* Subtle Verified Architect Badge */}
+        <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-zinc-900 border border-white/15 text-indigo-400 shadow-sm">
+          <ShieldCheck className="w-3.5 h-3.5" />
+        </div>
       </div>
 
       {/* Green "Available for Enterprise AI & High-Impact Ventures" Pill */}
@@ -115,7 +121,7 @@ END:VCARD`;
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.12)]"
+        className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.12)]"
       >
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -149,50 +155,60 @@ END:VCARD`;
         {PROFILE_DATA.tagline}
       </p>
 
-      {/* Action Bar (Vercel / Linear Minimalist Aesthetic) */}
+      {/* Action Bar with Brand Color Hover Highlights */}
       <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 z-30">
-        {/* Copy Email */}
+        {/* Copy Email Button (Emerald Glow on Hover) */}
         <button
           type="button"
           onClick={handleCopyEmail}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-emerald-500/10 border border-white/[0.08] hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-emerald-300 transition-all active:scale-95 shadow-sm group"
         >
           {copiedEmail ? (
             <Check className="w-3.5 h-3.5 text-emerald-400" />
           ) : (
-            <Copy className="w-3.5 h-3.5 text-zinc-400" />
+            <Copy className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
           )}
           <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
         </button>
 
-        {/* QR Digital Pass */}
+        {/* Direct Call Button (Emerald Voice Glow on Hover) */}
+        <a
+          href={PROFILE_DATA.contact.phoneUrl}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-emerald-500/10 border border-white/[0.08] hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-emerald-300 transition-all active:scale-95 shadow-sm group"
+          title={`Call ${PROFILE_DATA.contact.phone}`}
+        >
+          <Phone className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
+          <span>Call</span>
+        </a>
+
+        {/* QR Digital Pass (Indigo Glow on Hover) */}
         <button
           type="button"
           onClick={() => setShowQR(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-indigo-500/10 border border-white/[0.08] hover:border-indigo-500/40 text-xs font-mono text-zinc-300 hover:text-indigo-300 transition-all active:scale-95 shadow-sm group"
         >
-          <QrCode className="w-3.5 h-3.5 text-zinc-400" />
+          <QrCode className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors" />
           <span>QR Pass</span>
         </button>
 
-        {/* Download vCard */}
+        {/* Download vCard (Amber Glow on Hover) */}
         <button
           type="button"
           onClick={handleDownloadVCard}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-amber-500/10 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono text-zinc-300 hover:text-amber-300 transition-all active:scale-95 shadow-sm group"
         >
-          <Download className="w-3.5 h-3.5 text-zinc-400" />
+          <Download className="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-400 transition-colors" />
           <span>vCard</span>
         </button>
 
-        {/* Antigravity Toggle */}
+        {/* Antigravity Toggle (Indigo Glow on Hover) */}
         <button
           type="button"
           onClick={onToggleAntigravity}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all active:scale-95 ${
             antigravity
               ? 'bg-indigo-500/15 border-indigo-500/40 text-indigo-300 shadow-[0_0_15px_rgba(99,102,241,0.2)]'
-              : 'bg-zinc-900/60 border-white/[0.08] text-zinc-400 hover:text-zinc-200'
+              : 'bg-zinc-900/60 border-white/[0.08] hover:border-indigo-500/30 text-zinc-400 hover:text-indigo-300'
           }`}
           title="Toggle Zero-Gravity Levitation"
         >

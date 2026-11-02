@@ -45,13 +45,15 @@ export const PROFILE_DATA = {
   contact: {
     email: "akbarjon.ai@gmail.com",
     telegram: "https://t.me/egamberdiyev_ai",
+    instagram: "https://instagram.com/egamberdiyev_ai",
+    phone: "+998 90 000 00 00",
+    phoneUrl: "tel:+998900000000",
     github: "https://github.com/Aiagent1113",
     githubRepos: "https://github.com/Aiagent1113?tab=repositories",
     linkedin: "https://linkedin.com/in/akbarjon-egamberdiyev",
     twitter: "https://x.com/akbarjon_ai",
     huggingface: "https://huggingface.co/Akbarjon",
     calendar: "https://t.me/egamberdiyev_ai", // Direct consultation telegram CTA
-    phone: "+998 90 000 00 00",
   },
   flagship: {
     badge: "PRODUCTION v2.6",
@@ -106,9 +108,29 @@ export const PROFILE_DATA = {
       handle: "@egamberdiyev_ai",
       url: "https://t.me/egamberdiyev_ai",
       icon: "Send",
-      accentColor: "#6366F1", // Refined Indigo
+      accentColor: "#229ED9", // Official Telegram Blue / Cyan
       description: "Direct Encrypted Comm Link",
       stats: "Active Online",
+    },
+    {
+      id: "instagram",
+      name: "Instagram",
+      handle: "@egamberdiyev_ai",
+      url: "https://instagram.com/egamberdiyev_ai",
+      icon: "Instagram",
+      accentColor: "#E1306C", // Official Instagram Rose / Magenta
+      description: "AI Visuals & Daily Updates",
+      stats: "Stories & Posts",
+    },
+    {
+      id: "phone",
+      name: "Direct Call",
+      handle: "+998 90 000 00 00",
+      url: "tel:+998900000000",
+      icon: "Phone",
+      accentColor: "#10B981", // Emerald Voice Line
+      description: "Immediate Voice Line",
+      stats: "Available Now",
     },
     {
       id: "github",
@@ -116,7 +138,7 @@ export const PROFILE_DATA = {
       handle: "Aiagent1113",
       url: "https://github.com/Aiagent1113",
       icon: "Github",
-      accentColor: "#818CF8", // Indigo Accent
+      accentColor: "#A78BFA", // Quantum Violet
       description: "Autonomous Kernels & Repos",
       stats: "1.2k+ Stars",
     },
@@ -126,7 +148,7 @@ export const PROFILE_DATA = {
       handle: "in/akbarjon-egamberdiyev",
       url: "https://linkedin.com/in/akbarjon-egamberdiyev",
       icon: "Linkedin",
-      accentColor: "#6366F1", // Refined Indigo
+      accentColor: "#0A66C2", // Official LinkedIn Blue
       description: "Executive AI Network & Advisory",
       stats: "5,000+ Followers",
     },
@@ -136,7 +158,7 @@ export const PROFILE_DATA = {
       handle: "@Akbarjon",
       url: "https://huggingface.co/Akbarjon",
       icon: "Cpu",
-      accentColor: "#818CF8", // Indigo Accent
+      accentColor: "#F59E0B", // Hugging Face Amber / Gold
       description: "Model Weights & Research Papers",
       stats: "14 Models",
     },

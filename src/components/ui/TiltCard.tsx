@@ -26,7 +26,7 @@ interface TiltCardProps {
 export function TiltCard({
   children,
   className,
-  accentColor = '#6366F1', // Refined Indigo
+  accentColor = '#6366F1', // Default Refined Indigo
   antigravity = true,
   floatDelay = 0,
   floatDuration = 5,
@@ -40,7 +40,7 @@ export function TiltCard({
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Mouse motion values for 3D tilt
+  // Mouse motion values for 3D perspective tilt
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -75,7 +75,7 @@ export function TiltCard({
     y.set(0);
   }, [x, y]);
 
-  // Antigravity sine-wave animation variant
+  // Antigravity sine-wave vertical levitation
   const floatAnimation = useMemo(() => {
     if (!antigravity || isHovered) {
       return {
@@ -95,9 +95,11 @@ export function TiltCard({
   }, [antigravity, isHovered, floatDuration, floatDelay]);
 
   const commonClass = cn(
-    'group relative block rounded-2xl transition-all duration-200 outline-none select-none',
-    href ? 'cursor-pointer hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050508]' : '',
-    onClick && !href ? 'cursor-pointer' : '',
+    'group relative block rounded-2xl transition-all duration-300 outline-none select-none',
+    href
+      ? 'cursor-pointer hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none'
+      : '',
+    onClick && !href ? 'cursor-pointer hover:-translate-y-0.5' : '',
     className
   );
 
@@ -107,30 +109,37 @@ export function TiltCard({
         rotateX: interactive ? rotateX : 0,
         rotateY: interactive ? rotateY : 0,
         transformStyle: 'preserve-3d',
+        borderColor: isHovered ? `${accentColor}55` : 'rgba(255, 255, 255, 0.07)',
+        backgroundColor: isHovered ? `${accentColor}0e` : 'rgba(9, 9, 13, 0.65)',
+        boxShadow: isHovered
+          ? `0 12px 30px -10px ${accentColor}28, inset 0 1px 0 0 rgba(255, 255, 255, 0.1)`
+          : '0 4px 20px -2px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
       }}
       className={cn(
         'relative h-full w-full rounded-2xl overflow-hidden p-5 sm:p-6',
-        // Vercel / Linear Obsidian Card Surface
-        'bg-zinc-950/60 backdrop-blur-xl',
-        // Hairline border transitioning to brighter specular on hover
-        'border border-white/[0.07] group-hover:border-white/[0.18]',
-        'shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)]',
+        'backdrop-blur-xl border',
         'transition-colors duration-300'
       )}
     >
-      {/* Radial Hover Spotlight Glow */}
+      {/* Brand-Specific Cursor-Tracking Radial Spotlight Aura */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-10"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(380px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.12), transparent 45%)`,
+          background: `radial-gradient(360px circle at ${mousePos.x}px ${mousePos.y}px, ${accentColor}24, transparent 50%)`,
         }}
       />
 
-      {/* Subtle top specular sheen */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-70" />
+      {/* Subtle top specular sheen in brand tone */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-300"
+        style={{
+          background: `linear-gradient(90deg, transparent 0%, ${isHovered ? accentColor : 'rgba(255,255,255,0.2)'} 50%, transparent 100%)`,
+          opacity: isHovered ? 0.9 : 0.4,
+        }}
+      />
 
-      {/* Elevated content container */}
+      {/* Elevated 3D Content Container */}
       <div
         style={{
           transform: isHovered ? 'translateZ(20px)' : 'translateZ(0px)',
@@ -154,7 +163,9 @@ export function TiltCard({
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{ perspective: 1000 }}
+        style={{
+          perspective: 1000,
+        }}
         className={commonClass}
       >
         {innerContent}

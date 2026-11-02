@@ -13,6 +13,8 @@ import {
   Calendar,
   Layers,
   ChevronRight,
+  Instagram,
+  Phone,
 } from 'lucide-react';
 import { PROFILE_DATA } from '@/data/profileData';
 import { TiltCard } from './TiltCard';
@@ -58,6 +60,10 @@ export function BentoGrid({ antigravity }: BentoGridProps) {
     switch (id) {
       case 'telegram':
         return <Send className="w-4 h-4" />;
+      case 'instagram':
+        return <Instagram className="w-4 h-4" />;
+      case 'phone':
+        return <Phone className="w-4 h-4" />;
       case 'github':
         return <Github className="w-4 h-4" />;
       case 'linkedin':
@@ -197,7 +203,7 @@ export function BentoGrid({ antigravity }: BentoGridProps) {
                       Neural OSS AI Lab
                     </h4>
                     <span className="text-[10px] font-mono text-zinc-500">
-                      github.com/{PROFILE_DATA.socials.find(s => s.id === 'github')?.handle}
+                      github.com/{PROFILE_DATA.socials.find((s) => s.id === 'github')?.handle}
                     </span>
                   </div>
                 </div>
@@ -263,9 +269,9 @@ export function BentoGrid({ antigravity }: BentoGridProps) {
               </div>
             </div>
 
-            {/* Semantic Link: Explore All Models & Weights (Required by Spec) */}
+            {/* Semantic Link: Explore All Models & Weights */}
             <a
-              href="https://github.com/Aiagent1113?tab=repositories"
+              href={PROFILE_DATA.contact.githubRepos}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-indigo-400 hover:text-indigo-300 transition-colors group/explore"
@@ -278,56 +284,93 @@ export function BentoGrid({ antigravity }: BentoGridProps) {
       </div>
 
       {/* =========================================================================
-          CARDS 4, 5, 6, 7: SEMANTIC MAGNETIC SOCIAL TILES (SPAN 1 EACH)
-          Strictly rendered as <a href="..." target="_blank" rel="noopener noreferrer">
+          CARDS 4 - 9: 6 DEDICATED MAGNETIC SOCIAL & CONTACT TILES (SPAN 4)
+          Includes: Telegram, Instagram, Phone Call, GitHub, LinkedIn, HuggingFace/X
+          Each tile transforms its color, border, and spotlight aura on hover to its brand color!
           ========================================================================= */}
-      {PROFILE_DATA.socials.map((social, index) => (
-        <div key={social.id} className="col-span-1">
+      <div className="col-span-1 sm:col-span-4 grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+        {PROFILE_DATA.socials.map((social, index) => (
           <TiltCard
-            accentColor="#6366F1"
+            key={social.id}
+            accentColor={social.accentColor}
             antigravity={antigravity}
-            floatDelay={0.15 * index}
-            floatDuration={4.6 + index * 0.3}
+            floatDelay={0.12 * index}
+            floatDuration={4.6 + index * 0.25}
             href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={social.id === 'phone' ? undefined : '_blank'}
+            rel={social.id === 'phone' ? undefined : 'noopener noreferrer'}
             className="h-full"
           >
-            <div className="flex flex-col justify-between h-full min-h-[135px]">
-              {/* Header: Icon & External Animated Arrow */}
+            <div className="flex flex-col justify-between h-full min-h-[140px]">
+              {/* Header: Brand-tinted Icon & Hover Animated Arrow */}
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${social.accentColor}15`,
+                    borderColor: `${social.accentColor}30`,
+                    borderWidth: '1px',
+                    color: social.accentColor,
+                    boxShadow: `0 0 16px ${social.accentColor}20`,
+                  }}
+                >
                   {getSocialIcon(social.id)}
                 </div>
 
-                <div className="w-6 h-6 rounded-md bg-white/[0.04] group-hover:bg-indigo-500/20 text-zinc-400 group-hover:text-indigo-300 border border-white/[0.08] flex items-center justify-center transition-all duration-200">
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div
+                  className="w-6 h-6 rounded-md flex items-center justify-center border transition-all duration-300"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    borderColor: 'rgba(255, 255, 255, 0.08)',
+                    color: '#a1a1aa',
+                  }}
+                >
+                  <ArrowUpRight
+                    className="w-3.5 h-3.5 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    style={{ color: undefined }}
+                  />
                 </div>
               </div>
 
               {/* Title & Handle */}
               <div className="my-2">
-                <h4 className="text-sm font-semibold tracking-tight text-white group-hover:text-indigo-200 transition-colors">
-                  {social.name}
+                <h4
+                  className="text-sm font-semibold tracking-tight text-white transition-colors duration-300"
+                  style={{
+                    color: undefined,
+                  }}
+                >
+                  <span className="group-hover:text-white group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all">
+                    {social.name}
+                  </span>
                 </h4>
                 <p className="text-[11px] font-mono text-zinc-500 truncate mt-0.5">
                   {social.handle}
                 </p>
               </div>
 
-              {/* Bottom State Tag */}
+              {/* Bottom State Pill with Brand Color Accent */}
               <div className="flex items-center justify-between pt-2 border-t border-white/[0.06] text-[10px] font-mono">
-                <span className="text-zinc-400 font-medium truncate group-hover:text-indigo-300 transition-colors">
+                <span
+                  style={{ color: social.accentColor }}
+                  className="font-medium truncate transition-all duration-300 group-hover:brightness-125"
+                >
                   {social.stats || 'Connect ↗'}
+                </span>
+                <span
+                  className="text-[9px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold uppercase tracking-wider"
+                  style={{ color: social.accentColor }}
+                >
+                  OPEN
                 </span>
               </div>
             </div>
           </TiltCard>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {/* =========================================================================
-          CARD 8: FULL-WIDTH CONSULTATION / DIRECT BOOKING LINK (SPAN 4)
+          CARD 10: FULL-WIDTH CONSULTATION / DIRECT BOOKING LINK (SPAN 4)
           Interactive CTA button linking to https://t.me/egamberdiyev_ai
           ========================================================================= */}
       <div className="col-span-1 sm:col-span-4">
@@ -362,10 +405,10 @@ export function BentoGrid({ antigravity }: BentoGridProps) {
               </div>
             </div>
 
-            {/* Semantic Interactive CTA Button (Required by Spec) */}
+            {/* Semantic Interactive CTA Button */}
             <div className="w-full sm:w-auto flex items-center justify-end shrink-0">
               <a
-                href="https://t.me/egamberdiyev_ai"
+                href={PROFILE_DATA.contact.calendar}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(99,102,241,0.35)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] transition-all duration-200 hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
