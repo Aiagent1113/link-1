@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #030305;
-  --foreground: #f8fafc;
+  --background: #050508;
+  --foreground: #f4f4f5;
 }
 
 * {
@@ -15,8 +15,8 @@
 
 html,
 body {
-  background-color: #030305;
-  color: #f8fafc;
+  background-color: #050508;
+  color: #f4f4f5;
   min-height: 100vh;
   overflow-x: hidden;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -24,40 +24,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle holographic grain overlay */
+/* Subtle micro-grid overlay (Vercel / Linear inspired) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
   pointer-events: none;
   z-index: 1;
 }
 
 /* Custom Selection */
 ::selection {
-  background: rgba(0, 245, 212, 0.3);
-  color: #00F5D4;
+  background: rgba(99, 102, 241, 0.28);
+  color: #a5b4fc;
 }
 
-/* Custom Sleek Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030305;
+  background: #050508;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 245, 212, 0.35);
+  background: rgba(99, 102, 241, 0.4);
 }
 
 /* Custom Keyframe Animations */

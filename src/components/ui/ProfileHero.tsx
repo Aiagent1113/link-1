@@ -8,11 +8,8 @@ import {
   QrCode,
   Download,
   Orbit,
-  Sparkles,
   MapPin,
-  ShieldCheck,
-  Radio,
-  ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 import { PROFILE_DATA } from '@/data/profileData';
 import { QRModal } from './QRModal';
@@ -50,7 +47,7 @@ export function ProfileHero({ antigravity, onToggleAntigravity }: ProfileHeroPro
 VERSION:3.0
 N:Egamberdiyev;Akbarjon;;;
 FN:Akbarjon Egamberdiyev
-ORG:Autonomous Systems & Neural Intelligence
+ORG:Autonomous Systems & Neural Architecture
 TITLE:${PROFILE_DATA.title}
 EMAIL;TYPE=INTERNET,PREF:${PROFILE_DATA.contact.email}
 TEL;TYPE=CELL:${PROFILE_DATA.contact.phone}
@@ -69,11 +66,11 @@ END:VCARD`;
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    triggerToast('Neural vCard Contact downloaded');
+    triggerToast('Contact card (vCard) downloaded');
   };
 
   return (
-    <div className="relative w-full flex flex-col items-center text-center pt-2 pb-4">
+    <div className="relative w-full flex flex-col items-center text-center pt-1 pb-3">
       {/* Toast Notification */}
       <AnimatePresence>
         {toastMessage && (
@@ -81,156 +78,130 @@ END:VCARD`;
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.95 }}
-            className="fixed top-6 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0a0a10]/90 border border-[#00F5D4]/40 shadow-[0_0_30px_rgba(0,245,212,0.3)] backdrop-blur-xl text-xs font-mono text-white"
+            className="fixed top-6 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/95 border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl text-xs font-mono text-zinc-200"
           >
-            <div className="w-2 h-2 rounded-full bg-[#00F5D4] animate-ping" />
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>{toastMessage}</span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 3D Levitating Avatar Frame with Dual Rotating Neural Ring */}
-      <div className="relative mb-6">
-        {/* Outer Rotating Gradient Rings */}
-        <div className="absolute -inset-2.5 rounded-full bg-gradient-to-tr from-[#00F5D4] via-[#7B2CBF] to-[#E2B86B] opacity-75 blur-[6px] animate-spin-slow" />
-        
-        {/* Inner Counter-Rotating Hairline Ring */}
-        <div 
-          className="absolute -inset-1.5 rounded-full border border-dashed border-[#00F5D4]/50" 
-          style={{ animation: 'spin 14s linear infinite reverse' }} 
+      {/* Streamlined Monogram Avatar with Single Subtle Rotating Conic-Gradient Border */}
+      <div className="relative mb-5 group">
+        {/* Single rotating conic-gradient border ring */}
+        <div
+          className="absolute -inset-0.5 rounded-full opacity-70 blur-[1px] animate-spin-slow pointer-events-none"
+          style={{
+            background:
+              'conic-gradient(from 0deg, transparent 0%, rgba(99, 102, 241, 0.7) 35%, transparent 55%, rgba(16, 185, 129, 0.5) 85%, transparent 100%)',
+          }}
         />
 
-        {/* Central Avatar Orb */}
-        <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden p-1 bg-[#050508] border border-white/20 shadow-[0_0_35px_rgba(0,245,212,0.35)]">
-          <div className="w-full h-full rounded-full bg-gradient-to-b from-[#0f172a] via-[#05050a] to-[#020204] flex flex-col items-center justify-center relative overflow-hidden group">
-            {/* Holographic grid texture */}
-            <div className="absolute inset-0 bg-[radial-gradient(#00F5D4_1px,transparent_1px)] [background-size:12px_12px] opacity-25" />
-
-            {/* Stylized AI Monogram & Hologram Avatar */}
-            <div className="relative z-10 flex flex-col items-center justify-center">
-              <span className="text-3xl sm:text-4xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-[#00F5D4] to-[#E2B86B] drop-shadow-[0_2px_10px_rgba(0,245,212,0.5)]">
-                AE
-              </span>
-              <span className="text-[9px] tracking-widest uppercase font-mono text-[#00F5D4]/80 mt-0.5">
-                NEURAL CORE
-              </span>
-            </div>
-
-            {/* Specular Glint */}
-            <div className="absolute -top-12 -left-12 w-24 h-24 bg-white/20 rounded-full blur-xl pointer-events-none" />
+        {/* High-Contrast Monogram Badge */}
+        <div className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-[#09090d] border border-white/[0.12] flex items-center justify-center shadow-[0_0_25px_rgba(0,0,0,0.6)]">
+          <div className="flex flex-col items-center justify-center">
+            <span className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-white">
+              AE
+            </span>
+            <span className="text-[8px] tracking-[0.2em] uppercase font-mono text-indigo-400 mt-0.5">
+              AI ARCHITECT
+            </span>
           </div>
         </div>
-
-        {/* Verified AI Architect Floating Badge */}
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="absolute -bottom-1 -right-1 px-2.5 py-1 rounded-full bg-[#030305]/90 border border-[#00F5D4]/50 shadow-[0_0_15px_rgba(0,245,212,0.4)] backdrop-blur-md flex items-center gap-1.5 cursor-default"
-        >
-          <ShieldCheck className="w-3.5 h-3.5 text-[#00F5D4]" />
-          <span className="text-[10px] font-mono font-semibold tracking-wider text-white">
-            ARCHITECT
-          </span>
-        </motion.div>
       </div>
 
-      {/* Live Status Badge */}
+      {/* Green "Available for Enterprise AI & High-Impact Ventures" Pill */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono mb-4 shadow-[0_0_20px_rgba(16,185,129,0.2)] backdrop-blur-md"
+        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3.5 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.12)]"
       >
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
         </span>
-        <span className="tracking-tight text-[11px] sm:text-xs">
+        <span className="tracking-tight text-[11px] sm:text-xs font-medium">
           {PROFILE_DATA.status.text}
         </span>
       </motion.div>
 
-      {/* Name with Metallic Liquid Text Shader */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#e2e8f0] to-[#94a3b8]">
-          {PROFILE_DATA.name}
-        </span>
+      {/* Bold H1 with Tight Tracking (-0.03em) */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-white mb-2">
+        {PROFILE_DATA.name}
       </h1>
 
-      {/* Role / Title */}
-      <div className="flex items-center justify-center gap-2 mb-3">
-        <span className="text-sm sm:text-base font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#00F5D4] via-[#7B2CBF] to-[#E2B86B]">
+      {/* Title / Role */}
+      <div className="flex items-center justify-center gap-2 mb-2">
+        <span className="text-sm sm:text-base font-medium text-zinc-300">
           {PROFILE_DATA.title}
         </span>
       </div>
 
       {/* Location */}
-      <div className="flex items-center justify-center gap-1.5 text-xs text-white/50 font-mono mb-4">
-        <MapPin className="w-3.5 h-3.5 text-[#00F5D4]/70" />
+      <div className="flex items-center justify-center gap-1.5 text-xs text-zinc-500 font-mono mb-3">
+        <MapPin className="w-3.5 h-3.5 text-indigo-400/80" />
         <span>{PROFILE_DATA.location}</span>
       </div>
 
-      {/* Tagline / Bio */}
-      <p className="max-w-xl text-xs sm:text-sm text-white/70 leading-relaxed font-sans mb-6 px-4">
+      {/* Clean Muted Subtitle Text (text-zinc-400) */}
+      <p className="max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans mb-6 px-4">
         {PROFILE_DATA.tagline}
       </p>
 
-      {/* Luxury Utility Action Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 z-30">
-        {/* Copy Email Button */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.95 }}
+      {/* Action Bar (Vercel / Linear Minimalist Aesthetic) */}
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 z-30">
+        {/* Copy Email */}
+        <button
+          type="button"
           onClick={handleCopyEmail}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#00F5D4]/40 text-xs font-mono text-white transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] group"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
         >
           {copiedEmail ? (
-            <Check className="w-3.5 h-3.5 text-[#10B981]" />
+            <Check className="w-3.5 h-3.5 text-emerald-400" />
           ) : (
-            <Copy className="w-3.5 h-3.5 text-white/60 group-hover:text-[#00F5D4] transition-colors" />
+            <Copy className="w-3.5 h-3.5 text-zinc-400" />
           )}
-          <span>{copiedEmail ? 'Email Copied' : 'Copy Email'}</span>
-        </motion.button>
+          <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
+        </button>
 
-        {/* QR Digital Pass Button */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.95 }}
+        {/* QR Digital Pass */}
+        <button
+          type="button"
           onClick={() => setShowQR(true)}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#00F5D4]/40 text-xs font-mono text-white transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] group"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
         >
-          <QrCode className="w-3.5 h-3.5 text-white/60 group-hover:text-[#00F5D4] transition-colors" />
+          <QrCode className="w-3.5 h-3.5 text-zinc-400" />
           <span>QR Pass</span>
-        </motion.button>
+        </button>
 
-        {/* Download vCard Button */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.95 }}
+        {/* Download vCard */}
+        <button
+          type="button"
           onClick={handleDownloadVCard}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#E2B86B]/40 text-xs font-mono text-white transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] group"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95 shadow-sm"
         >
-          <Download className="w-3.5 h-3.5 text-white/60 group-hover:text-[#E2B86B] transition-colors" />
-          <span>vCard (.vcf)</span>
-        </motion.button>
+          <Download className="w-3.5 h-3.5 text-zinc-400" />
+          <span>vCard</span>
+        </button>
 
-        {/* Antigravity Physics Mode Toggle */}
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.95 }}
+        {/* Antigravity Toggle */}
+        <button
+          type="button"
           onClick={onToggleAntigravity}
-          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-mono transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all active:scale-95 ${
             antigravity
-              ? 'bg-[#00F5D4]/15 border-[#00F5D4]/50 text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]'
-              : 'bg-white/[0.04] border-white/10 text-white/60'
+              ? 'bg-indigo-500/15 border-indigo-500/40 text-indigo-300 shadow-[0_0_15px_rgba(99,102,241,0.2)]'
+              : 'bg-zinc-900/60 border-white/[0.08] text-zinc-400 hover:text-zinc-200'
           }`}
           title="Toggle Zero-Gravity Levitation"
         >
-          <Orbit className={`w-3.5 h-3.5 ${antigravity ? 'animate-spin-slow text-[#00F5D4]' : ''}`} />
+          <Orbit className={`w-3.5 h-3.5 ${antigravity ? 'animate-spin-slow text-indigo-400' : ''}`} />
           <span>Antigravity: {antigravity ? 'ON' : 'OFF'}</span>
-        </motion.button>
+        </button>
       </div>
 
-      {/* QR Modal Component */}
+      {/* QR Modal */}
       <QRModal isOpen={showQR} onClose={() => setShowQR(false)} />
     </div>
   );

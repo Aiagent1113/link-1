@@ -17,6 +17,7 @@ export interface SocialLink {
 
 export interface TerminalCommand {
   command: string;
+  label: string;
   output: string[];
 }
 
@@ -45,10 +46,11 @@ export const PROFILE_DATA = {
     email: "akbarjon.ai@gmail.com",
     telegram: "https://t.me/egamberdiyev_ai",
     github: "https://github.com/Aiagent1113",
+    githubRepos: "https://github.com/Aiagent1113?tab=repositories",
     linkedin: "https://linkedin.com/in/akbarjon-egamberdiyev",
     twitter: "https://x.com/akbarjon_ai",
     huggingface: "https://huggingface.co/Akbarjon",
-    calendar: "https://cal.com/akbarjon-ai/architecture-session",
+    calendar: "https://t.me/egamberdiyev_ai", // Direct consultation telegram CTA
     phone: "+998 90 000 00 00",
   },
   flagship: {
@@ -58,9 +60,9 @@ export const PROFILE_DATA = {
     description: "Enterprise-grade distributed neural runtime featuring deterministic DAG execution, sub-40ms speculative token decoding, and sovereign agent memory synchronization.",
     tags: ["PyTorch", "LangGraph", "CUDA", "Next.js", "Vector DB", "vLLM", "Triton"],
     metrics: [
-      { label: "Uptime SLA", value: "99.98%", trend: "Real-time" },
+      { label: "Uptime SLA", value: "99.98%", trend: "ONLINE" },
       { label: "Inference Speed", value: "142 tok/s", trend: "FP8 vLLM" },
-      { label: "Fine-Tuned Models", value: "14+", trend: "Deployed" },
+      { label: "Fine-Tuned Models", value: "14+", trend: "Cluster" },
       { label: "Cluster Latency", value: "32ms", trend: "p99 Bound" },
     ],
     liveDemoUrl: "https://github.com/Aiagent1113",
@@ -72,7 +74,7 @@ export const PROFILE_DATA = {
       stars: 482,
       forks: 67,
       language: "Python / CUDA",
-      langColor: "#3572A5",
+      langColor: "#818CF8",
       url: "https://github.com/Aiagent1113",
       tag: "v2.6 Stable",
     },
@@ -82,7 +84,7 @@ export const PROFILE_DATA = {
       stars: 319,
       forks: 41,
       language: "C++ / PyTorch",
-      langColor: "#f34b7d",
+      langColor: "#6366F1",
       url: "https://github.com/Aiagent1113",
       tag: "Research",
     },
@@ -92,7 +94,7 @@ export const PROFILE_DATA = {
       stars: 245,
       forks: 28,
       language: "CUDA",
-      langColor: "#76b900",
+      langColor: "#10B981",
       url: "https://github.com/Aiagent1113",
       tag: "Kernel",
     },
@@ -104,7 +106,7 @@ export const PROFILE_DATA = {
       handle: "@egamberdiyev_ai",
       url: "https://t.me/egamberdiyev_ai",
       icon: "Send",
-      accentColor: "#00F5D4", // Neural Cyan
+      accentColor: "#6366F1", // Refined Indigo
       description: "Direct Encrypted Comm Link",
       stats: "Active Online",
     },
@@ -114,7 +116,7 @@ export const PROFILE_DATA = {
       handle: "Aiagent1113",
       url: "https://github.com/Aiagent1113",
       icon: "Github",
-      accentColor: "#7B2CBF", // Quantum Violet
+      accentColor: "#818CF8", // Indigo Accent
       description: "Autonomous Kernels & Repos",
       stats: "1.2k+ Stars",
     },
@@ -124,7 +126,7 @@ export const PROFILE_DATA = {
       handle: "in/akbarjon-egamberdiyev",
       url: "https://linkedin.com/in/akbarjon-egamberdiyev",
       icon: "Linkedin",
-      accentColor: "#38BDF8", // Electric Blue
+      accentColor: "#6366F1", // Refined Indigo
       description: "Executive AI Network & Advisory",
       stats: "5,000+ Followers",
     },
@@ -134,7 +136,7 @@ export const PROFILE_DATA = {
       handle: "@Akbarjon",
       url: "https://huggingface.co/Akbarjon",
       icon: "Cpu",
-      accentColor: "#E2B86B", // Champagne Gold
+      accentColor: "#818CF8", // Indigo Accent
       description: "Model Weights & Research Papers",
       stats: "14 Models",
     },
@@ -143,54 +145,47 @@ export const PROFILE_DATA = {
     initialCommand: "whoami",
     commands: [
       {
-        command: "Who is Akbarjon?",
+        command: "whoami",
+        label: "whoami",
         output: [
-          "> Initializing neural identity protocol for Akbarjon Egamberdiyev...",
-          "[ROLE]: Senior AI Engineer & Autonomous Systems Architect based in Tashkent, Uzbekistan.",
-          "[CORE FOCUS]: Specializing in frontier LLM agent orchestration, high-compute neural inference, and low-latency spatial intelligence.",
-          "[IMPACT]: Architected sovereign AI platforms processing millions of daily inference tokens across multi-GPU clusters.",
-          "[STATUS]: Active. Ready for enterprise AI advisory, founding engineer roles, and cutting-edge collaborations."
+          "[IDENTITY]: Akbarjon Egamberdiyev — Senior AI Engineer & Autonomous Systems Architect.",
+          "[LOCATION]: Tashkent, Uzbekistan (Global Remote).",
+          "[MISSION] : Architecting sovereign LLM agent networks, high-compute neural pipelines & speculative inference.",
+          "[STATUS]  : Available for Enterprise AI Advisory & Venture Engineering.",
         ],
       },
       {
-        command: "Tech Stack",
+        command: "nvidia-smi --cluster",
+        label: "nvidia-smi --cluster",
         output: [
-          "> Querying deep neural architecture & technology matrix...",
-          "[AI / ML]       : PyTorch, vLLM, TensorRT-LLM, LangGraph, DeepSpeed, Triton, HuggingFace Transformers",
-          "[SYSTEMS & GPU] : CUDA C++, Linux Kernel tuning, Slurm clusters, NVIDIA H100/A100 optimization",
-          "[VECTOR / RAG]  : Qdrant, Milvus, pgvector, hybrid semantic re-ranking, graph RAG",
-          "[FRONTEND & 3D] : Next.js 15, TypeScript, Three.js, WebGL, TailwindCSS, Framer Motion",
-          "[DEPLOYMENT]    : Docker, Kubernetes, Ray Serve, FastAPI, AWS SageMaker, GCP Vertex AI"
+          "+-----------------------------------------------------------------------------+",
+          "| NVIDIA-SMI 550.54.14              Driver Version: 550.54.14   CUDA: 12.4    |",
+          "| GPU  Name        Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |",
+          "|   0  H100 80GB HBM3        On  | 00000000:06:00.0 Off |                    0 |",
+          "| 64%   72C    P0   420W / 700W |  52410MiB / 81559MiB |      98%      Default|",
+          "+-----------------------------------------------------------------------------+",
+          "| Latency: p99 31.8ms | Throughput: 142.4 tok/s | Uptime: 99.98% Healthy     |",
         ],
       },
       {
-        command: "Latest AI Models",
+        command: "cat stack.json",
+        label: "cat stack.json",
         output: [
-          "> Inspecting deployed neural weights registry...",
-          "● [Akbar-Reason-70B-FP8]   : Fine-tuned multi-step chain-of-thought mathematical reasoning model (MMLU 88.4%)",
-          "● [SpatialAgent-V2]        : Vision-language agent for 3D spatial query resolution & robotic manipulation",
-          "● [Speculative-Draft-Kernel]: Ultra-fast 1.2B draft model yielding 3.2x speedup on Llama-3-70B inference",
-          "● [Neural-Consensus-DAG]   : Multi-agent coordination harness with zero hallucinatory drift"
-        ],
-      },
-      {
-        command: "System Telemetry",
-        output: [
-          "> Running real-time telemetry diagnostics...",
-          "[GPU NODES]      : 8x NVIDIA H100 80GB SXM5 (Online, 99.98% Healthy)",
-          "[VRAM UTIL]      : 64.2% / 640 GB Allocated across active shards",
-          "[TOKEN THROUGHPUT: 142.6 tokens/sec (Average across all stream channels)",
-          "[P99 LATENCY]    : 31.8 ms (First-Token-To-Stream)",
-          "[AGENT STATE]    : 42 autonomous worker agents currently synchronized in memory"
+          "{",
+          '  "ai_ml": ["PyTorch", "vLLM", "TensorRT-LLM", "DeepSpeed", "Triton"],',
+          '  "agentic": ["LangGraph", "DAG Consensus", "Autonomous Tool Calling"],',
+          '  "infrastructure": ["NVIDIA H100 SXM5", "CUDA C++", "Ray Serve", "Slurm"],',
+          '  "spatial_frontend": ["Next.js", "Three.js", "TailwindCSS", "Framer Motion"]',
+          "}",
         ],
       },
     ],
   },
   consultation: {
     title: "Book a 1-on-1 AI Architecture & Strategy Session",
-    badge: "EXECUTIVE CONSULTING",
-    description: "Confidential technical deep-dive into LLM pipeline architecture, custom agent orchestration, GPU inference optimization, or venture advisory.",
-    duration: "45-Minute Strategic Session",
-    availability: "Limited slots available for Q4/Q1",
+    badge: "EXECUTIVE ADVISORY",
+    description: "Direct technical deep-dive into LLM pipeline architecture, custom agent orchestration, GPU inference optimization, or venture advisory.",
+    duration: "45-Minute Strategic Deep-Dive",
+    availability: "Available for Q4/Q1 Consultations",
   },
 };
